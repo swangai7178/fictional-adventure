@@ -1,0 +1,28 @@
+{
+  "levels": {
+    "1": [
+      {
+        "question": "What is the capital of Kenya?",
+        "answers": ["Nairobi", "Mombasa", "Kisumu"],
+        "correct": "Nairobi"
+      },
+      {
+        "question": "Which animal is known as the King of the Jungle?",
+        "answers": ["Lion", "Tiger", "Elephant"],
+        "correct": "Lion"
+      }
+    ],
+    "2": [
+      {
+        "question": "What is the smallest prime number?",
+        "answers": ["1", "2", "3"],
+        "correct": "2"
+      },
+      {
+        "question": "Who wrote 'Romeo and Juliet'?",
+        "answers": ["Shakespeare", "Tolstoy", "Homer"],
+        "correct": "Shakespeare"
+      }
+    ]
+  }
+}
