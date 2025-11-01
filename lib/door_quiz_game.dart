@@ -240,7 +240,6 @@ class DoorWithLabel extends PositionComponent
       ..size = Vector2(100, 130)
       ..anchor = Anchor.center
       ..position = size / 2;
-
     label = TextComponent(
       text: answerText,
       textRenderer: TextPaint(
