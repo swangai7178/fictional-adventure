@@ -37,6 +37,7 @@ dependencies:
   flame: ^1.33.0
   flame_audio: ^2.11.11
   google_fonts: ^6.3.2
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:

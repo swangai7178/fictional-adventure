@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flame/effects.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -8,6 +7,7 @@ import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+  import 'package:http/http.dart' as http;
 
 class DoorQuizGame extends FlameGame with TapCallbacks {
   late TextBoxComponent questionText;
@@ -58,17 +58,25 @@ class DoorQuizGame extends FlameGame with TapCallbacks {
     super.render(canvas);
   }
 
-  Future<void> _loadQuestionsFromFile() async {
-    final jsonString = await rootBundle.loadString('assets/questions.json');
-    final data = json.decode(jsonString);
 
+
+Future<void> _loadQuestionsFromFile() async {
+  final driveUrl = 'https://drive.google.com/uc?export=download&id=1s2pRxgd7Zjp5mD_tMqIIsLBzGRlMRXVe';
+  final response = await http.get(Uri.parse(driveUrl));
+
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body);
     levels = (data['levels'] as Map<String, dynamic>).map(
       (key, value) => MapEntry(
         int.parse(key),
         List<Map<String, dynamic>>.from(value),
       ),
     );
+  } else {
+    throw Exception('Failed to load questions from Google Drive');
   }
+}
+
 
   void restartGame() {
     currentQuestionIndex = 0;
